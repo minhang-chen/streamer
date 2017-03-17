@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>鼠标悬浮图片模糊效果</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.wrap{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -216px;
+			margin-left: -384px;
+			width: 768px;
+		}
+		.wrap img{
+			width: 100%;
+			transition:  filter 1s;
+		}
+		.wrap:hover img{
+			filter: blur(2px);
+		}
+		.caption{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			padding:30px;
+			z-index: 1;
+			text-align: center;
+			box-sizing: border-box;
+		}
+		.title{
+			position: relative;
+			height: 100%;
+			width: 100%;
+			box-sizing: border-box;
+			padding: 25% 0;
+			opacity: 0;
+			transition: all .5s;
+		}
+
+		.wrap:hover .title{
+			opacity: 1;
+		}
+
+		.title::before{
+			content:'';
+			border:3px solid #fff;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 0;
+			border-width: 0 3px;
+			overflow: hidden;
+			top: 50%;
+			box-sizing: border-box;
+			transition: all .5s;
+		}
+		.title::after{
+			content:'';
+			border:3px solid #fff;
+			position: absolute;
+			top: 0;
+			height:100%;
+			width: 0;
+			border-width: 3px 0;
+			overflow: hidden;
+			left: 50%;
+			box-sizing: border-box;
+			transition: all .5s;
+		}
+		.wrap:hover .title:before{
+			height: 100%;
+			top: 0;
+		}
+		.wrap:hover .title:after{
+			width: 100%;
+			left: 0;
+		}
+
+		.caption .streamer{
+			background-image: -webkit-linear-gradient(left,#3498db,#f47920 10%,#d71345 20%,#f7acbc 30%,#ffd400 40%,#3498db 50%,#f47920 60%,#d71345 70%,#f7acbc 80%,#ffd400 90%,#3498db);
+			color:transparent;
+			-webkit-background-clip: text;
+			background-size: 200% 100%;
+			animation: streamer 5s infinite linear;
+		}
+		@keyframes streamer{
+			0% {
+			       background-position: 0 0;
+			}
+		    100% {
+		        background-position: -100% 0;
+		   	}
+		}
+
+	</style>
+</head>
+<body>
+<figure class="wrap">
+	<figcaption class='caption'>
+		<div class='title'>
+			<h1 class="streamer">四月是你的谎言</h1>
+			<a href="https://github.com/minhang-chen" style="position:relative;z-index: 1;">点击进入</a>
+		</div>
+	</figcaption>
+	<img  src="2.jpg">
+</figure>
+</body>
+</html>
